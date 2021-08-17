@@ -7,6 +7,7 @@ class Homepage extends StatelessWidget{
     var dataplan="tuesday";
     return  Scaffold(
       appBar: AppBar(
+
         title: Text(
           "Catalog App"
         ),
