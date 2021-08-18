@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:fluterdemo/utils/routs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +10,16 @@ class Loginpage extends StatelessWidget{
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      child: Column(
+
+      child:SingleChildScrollView(
+
+
+      child:Column(
         children: [
           Image.asset("assets/images/login_image.png",fit: BoxFit.cover,),
           SizedBox(height: 20,),
 
-          Text("Welcome",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold
+          Text("Welcome",style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold
 
           ),
           ),
@@ -43,13 +48,13 @@ class Loginpage extends StatelessWidget{
           SizedBox(height: 20,),
           ElevatedButton(onPressed: ()
               {
-                print("dev");
+                Navigator.pushNamed(context, MyRouts.homegrouts);
               },child: Text ("Login"),
-          style: TextButton.styleFrom())
+          style: TextButton.styleFrom(minimumSize:Size (150,40)))
         ],
 
       ),
-
+      ),
 
     );
   }
