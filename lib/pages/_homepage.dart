@@ -1,44 +1,19 @@
 import 'package:flutter/material.dart';
-class Homepage extends StatelessWidget{
+class HomePage extends StatelessWidget {
+  final int days = 30;
+  final String name = "Codepur";
   @override
   Widget build(BuildContext context) {
-    int days=30;
-    num data=30.52;
-    var dataplan="tuesday";
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
-
-        title: Text(
-          "Catalog App"
-        ),
-
+        title: Text("Catalog App"),
       ),
-        body: Center(
-          child: Container(
-
-            child: Text(
-
-
-              "days of data plan="+"$days"+"Until this Month of the days $dataplan"+"otherwise you get  planty $data",
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-
-            ),
-
-
-
-          ),
-
-
-
-        ),
-   drawer: Drawer(
+      body: Center(
         child: Container(
-
-    ),
-    ),
+          child: Text("Welcome to $days days of flutter by $name"),
+        ),
+      ),
+      drawer: Drawer(),
     );
   }
-
 }
