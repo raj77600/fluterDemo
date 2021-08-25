@@ -2,29 +2,60 @@ import 'package:fluterdemo/models/catalog.dart';
 import 'package:fluterdemo/widgets/drawer.dart';
 import 'package:fluterdemo/widgets/items_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
-class HomePage extends StatelessWidget {
+class _HomePageState extends State<HomePage> {
   final int days = 30;
+
   final String name = "Codepur";
-  final dumylist=List.generate(20, (index) => CatalogModel.items[0]);
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    await Future.delayed(Duration(seconds: 2));
+    final catalogJson =
+    await rootBundle.loadString("assets/files/catalog.json");
+    final decodedData = jsonDecode(catalogJson);
+    var productsData = decodedData["products"];
+    CatalogModel.items = List.from(productsData)
+        .map<Item>((item) => Item.fromMap(item))
+        .toList();
+    setState(() {});
+
+
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        /*  backgroundColor: Colors.white,
-        elevation: 0.0,
-        iconTheme: IconThemeData(
-          color: Colors.black
-        ),*/
         title: Text("Catalog App"),
       ),
-      body: ListView.builder(
-        itemCount: dumylist.length,
-        itemBuilder: (context, index) {
-          return itemwidget(item: dumylist[index]);
-        },
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? ListView.builder(
+          itemCount: CatalogModel.items.length,
+          itemBuilder: (context, index) => itemwidget(
+            item: CatalogModel.items[index],
+          ),
+        )
+            : Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
       drawer: mydraers(),
     );
