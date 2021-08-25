@@ -3,4 +3,5 @@ class MyRouts{
   static String homegrouts="/home";
 
   static String recyclepage="/recycle";
+  static String homeDetailsrouts="/details";
 }
