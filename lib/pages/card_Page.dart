@@ -41,12 +41,62 @@ class CartPage extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text(
-          'This is the  Card page',
-          style: TextStyle(fontSize: 24),
+      body:Column(
+children: [
+  _CartList().p16().expand(),
+  Divider(),
+  CardTotal(),
+],
+      )
+    );
+  }
+}
+
+class CardTotal extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+   return SizedBox(
+     height: 200,
+     child: Row(
+       mainAxisAlignment: MainAxisAlignment.spaceAround,
+       children: [
+         "\$999".text.bold.xl5.color(context.theme.accentColor).make(),
+         ElevatedButton(
+           onPressed: () {
+             ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+               content: "Buy Not Suported".text.bold.make(),
+
+             ));
+           },
+           style: ButtonStyle(
+               backgroundColor:
+               MaterialStateProperty.all(context.theme.buttonColor)),
+           child: "Buy".text.white.make(),
+         ).p1().w32(context)
+       ],
+     ),
+   );
+  }
+}
+class _CartList extends StatefulWidget {
+  @override
+  __CartListState createState() => __CartListState();
+}
+
+class __CartListState extends State<_CartList> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: 5,
+      itemBuilder: (context, index) => ListTile(
+        leading: Icon(Icons.done),
+        trailing: IconButton(
+          icon: Icon(Icons.remove_circle_outline),
+          onPressed: () {},
         ),
+        title: "Item 1".text.make(),
       ),
     );
   }
 }
+
