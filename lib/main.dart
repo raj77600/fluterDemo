@@ -1,3 +1,4 @@
+import 'package:fluterdemo/pages/card_Page.dart';
 import 'package:fluterdemo/pages/login_page.dart';
 import 'package:fluterdemo/pages/recyclerview.dart';
 import 'package:fluterdemo/utils/routs.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       routes: {
         MyRouts.recyclepage: (context) => Recyclerviewpage(),
         MyRouts.homegrouts: (context) => HomePage(),
-        MyRouts.Loggingrouts: (context) => Loginpage()
+        MyRouts.Loggingrouts: (context) => Loginpage(),
+        MyRouts.cartrouts: (context) => CartPage()
       },
     );
   }

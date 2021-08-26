@@ -62,7 +62,7 @@ class catalogItem extends  StatelessWidget{
 
                             ),
 
-                            child: "Buy".text.bold.lg.make())
+                            child: "Add to cart".text.bold.lg.make())
                       ],
                     ).pOnly(right: 8.0)
                   ],

@@ -4,4 +4,5 @@ class MyRouts{
 
   static String recyclepage="/recycle";
   static String homeDetailsrouts="/details";
+  static String cartrouts="/carts";
 }

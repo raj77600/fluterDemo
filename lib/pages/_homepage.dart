@@ -1,4 +1,5 @@
 import 'package:fluterdemo/models/catalog.dart';
+import 'package:fluterdemo/utils/routs.dart';
 import 'package:fluterdemo/widgets/home_widget/catalog_header.dart';
 import 'package:fluterdemo/widgets/home_widget/catalog_list.dart';
 import 'package:fluterdemo/widgets/themes.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert';
 import 'package:velocity_x/velocity_x.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -39,6 +41,11 @@ class _HomePageState extends State<HomePage> {
     Widget build(BuildContext context) {
       return Scaffold(
         backgroundColor: MyTheme.creamColor,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRouts.cartrouts),
+          backgroundColor: MyTheme.darkblue,
+          child: Icon(CupertinoIcons.cart),
+        ),
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
